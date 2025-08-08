@@ -3,13 +3,11 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        Autor autor = new Autor("Jessica Felix", 34);
+        Autor autor = new Autor("Jessica Felix", 34, false);
         Livro livro = new Livro("Java for Beginners", "Tecnologia", autor);
-
         Usuario usuario = new Usuario("Lucas Rafael", 25);
 
         Date dataAtual = new Date();
-
         Emprestimo emprestimo = new Emprestimo(usuario, Arrays.asList(livro), dataAtual, dataAtual);
 
         if (!livro.isDisponivel()) {
@@ -23,5 +21,8 @@ public class Main {
         System.out.println("Idade: " + usuario.getIdade());
         System.out.println("Data de Retirada: " + emprestimo.getDataRetirada());
         System.out.println("Data de Devolucao: " + emprestimo.getDataDevolucao());
+
+        Artigo artigo = new Artigo("Entendendo Compiladores", autor, "Tecnologia", true);
+        System.out.println("Artigo: " + artigo.getTitulo() + " - Publicado: " + artigo.isPublicado());
     }
 }
