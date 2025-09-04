@@ -4,6 +4,7 @@ import java.util.List;
 public class Autor extends Pessoa {
     private List<Livro> livrosEscritos = new ArrayList<>();
     private boolean ehUsuario;
+    private EstrategiaPublicacao estrategiaPublicacao;
 
     public Autor(String nome, int idade, boolean ehUsuario) {
         super(nome, idade);
@@ -24,5 +25,17 @@ public class Autor extends Pessoa {
 
     public void setEhUsuario(boolean ehUsuario) {
         this.ehUsuario = ehUsuario;
+    }
+
+    public void setEstrategiaPublicacao(EstrategiaPublicacao estrategiaPublicacao) {
+        this.estrategiaPublicacao = estrategiaPublicacao;
+    }
+
+    public void publicar(String titulo) {
+        if (estrategiaPublicacao == null) {
+            System.out.println("Nenhuma estratégia definida para publicação.");
+        } else {
+            estrategiaPublicacao.publicar(titulo);
+        }
     }
 }
